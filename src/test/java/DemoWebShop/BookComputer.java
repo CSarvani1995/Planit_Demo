@@ -92,17 +92,11 @@ public class BookComputer {
 	    cart.ItemQuanity(Quantity);
 	    cart.AddcartButton();
 	    
+	  //Validate “The product has been added to your shopping cart” message
+		  String Popup = driver.findElement(By.xpath("//div[@id='bar-notification']")).getText();
+		  System.out.println(Popup);   
 	    
-	 //Validate “The product has been added to your shopping cart” message
-	  
-//	   try {
-//		   WebDriverWait popwait = new WebDriverWait(driver, Duration.ofSeconds(30))
-//			wait.	   
-//	   }
-//	   
-	    
-	 // click on the shopping cart and validate the subtotal.
-	    
+	 // click on the shopping cart and validate the subtotal. 
 	    cart.shoppingcartLink();
 	    weblib.defaultcontent(driver);
 		cart.shoppingcartLink();
@@ -122,11 +116,10 @@ public class BookComputer {
 		checkout.PaymentInformation(driver);
 		checkout.ConfirmOrder(driver);
 		
+	//logout
 		
-		
-	//Validate the message “Your order has been successfully processed!”
-		
-		
+		driver.findElement(By.xpath("//a[@class='ico-logout']")).click();
+		System.out.println("logout");
 		
 	}
 	

@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -103,14 +104,18 @@ public class SampleDemo {
 	   
 	    
 	 //Validate “The product has been added to your shopping cart” message
-	  
-	   
+	   // Thread.sleep(3000); 
+	   // Alert alert = driver.switchTo().alert();
+	    String Popup = driver.findElement(By.xpath("//div[@id='bar-notification']")).getText();
+	    System.out.println(Popup);
 	   
 	    
 	 // click on the shopping cart and validate the subtotal.
 	    
-	    driver.findElement(By.xpath("//span[contains(text(),'Shopping cart')]")).click();
+	  driver.findElement(By.xpath("//span[contains(text(),'Shopping cart')]")).click();
 		driver.switchTo().defaultContent();
+		
+		
 		driver.findElement(By.xpath("//span[contains(text(),'Shopping cart')]")).click();
 		
 		String subtotal =driver.findElement(By.className("product-subtotal")).getText();
@@ -151,12 +156,13 @@ public class SampleDemo {
 	//Validate the message “Your order has been successfully processed!”
 		
 		driver.switchTo().defaultContent();
-		driver.getTitle();
+
 		driver.findElement(By.xpath("//div[@class='title']")).getText();
+			
 		String actualMessage = driver.findElement(By.xpath("//div[@class='master-wrapper-main']//div[@class='title']")).getText();
-		
+	
 		String expectedMessage = "Your order has been successfully processed!";
-		
+	
 		Assert.assertEquals(actualMessage,expectedMessage);
 		
 		System.out.println(actualMessage);
@@ -165,6 +171,9 @@ public class SampleDemo {
 		System.out.println(OrderNo);
 		
 		driver.findElement(By.xpath("//div[@class='section order-completed']//input[@value='Continue']")).click();
+		
+		driver.findElement(By.xpath("//a[@class='ico-logout']")).click();
+		System.out.println("logout");
 		
 	}
 
