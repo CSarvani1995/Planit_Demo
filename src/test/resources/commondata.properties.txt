@@ -1,0 +1,5 @@
+Browser chorme
+url http://demowebshop.tricentis.com/
+username planittest78@gmail.com
+password 123456
+quantity 3
